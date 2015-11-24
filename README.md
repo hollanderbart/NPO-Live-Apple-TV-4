@@ -15,7 +15,7 @@ v1.0: Initial release.
 As this is an unofficial app, not available on the App Store, you will need to _sideload_ it onto your Apple TV. To do so, you can follow the steps below.
 
 #### What you will need
-**Access to a computer running OS X**, which needs to be a version that is capable of running the version of Xcode that you will need. This is dependant on the version of your Apple TV: if you’re not running a beta, you can download the latest version of Xcode on [the Mac App Store](https://itunes.apple.com/us/app/xcode/id497799835?ls=1&mt=12). If not, you can download it from [developer.apple.com](https://developer.apple.com/xcode/download/).
+**Access to a computer running OS X**, which needs to be a version that is capable of running the version of Xcode that you will need. This is dependent on the version of your Apple TV: if you’re not running a beta, you can download the latest version of Xcode on [the Mac App Store](https://itunes.apple.com/us/app/xcode/id497799835?ls=1&mt=12). If not, you can download it from [developer.apple.com](https://developer.apple.com/xcode/download/).
 
 **An Apple Developer account** (free).
 
