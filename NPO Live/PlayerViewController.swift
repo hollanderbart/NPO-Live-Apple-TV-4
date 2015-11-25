@@ -24,8 +24,8 @@ class PlayerViewController: AVPlayerViewController {
             _titleMetadataItem.locale = NSLocale.currentLocale()
             _titleMetadataItem.key = AVMetadataCommonKeyTitle
             _titleMetadataItem.keySpace = AVMetadataKeySpaceCommon
-            _titleMetadataItem.value = channel.title
-            
+			_titleMetadataItem.value = (channel.activeShow != nil) ? channel.activeShow : channel.title
+			
             return _titleMetadataItem
         }()
         

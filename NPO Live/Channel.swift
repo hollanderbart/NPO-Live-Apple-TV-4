@@ -12,9 +12,17 @@ class Channel {
     var title: String
     var url: NSURL?
 	var streamUrl : NSURL?
+	var urlForShowInformation : NSURL?
+	var activeShow : String?
 	
 	init(title: String, url: NSURL?) {
 		self.title = title
+		self.url = url
+	}
+	
+	init(title: String, urlForShowInformation: NSURL?, url: NSURL?) {
+		self.title = title
+		self.urlForShowInformation = urlForShowInformation
 		self.url = url
 	}
 }

@@ -17,29 +17,87 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Kbk-6m-r1C">
-                                <rect key="frame" x="20" y="0.0" width="1880" height="1080"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mok-lG-N3N" userLabel="3 Columns">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="500"/>
                                 <animations/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Whx-99-Kjf">
-                                    <size key="itemSize" width="300" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="500" id="oCv-He-47Y"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="100" minimumInteritemSpacing="48" id="ivP-gW-Wh0">
+                                    <size key="itemSize" width="548" height="355"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
+                                    <inset key="sectionInset" minX="60" minY="60" maxX="60" maxY="60"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ChannelCell" id="He5-eV-epd" customClass="ChannelCell" customModule="NPO_Live" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="20" width="300" height="200"/>
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ChannelCell" id="JWN-S6-bxN" customClass="BigChannelCell" customModule="NPO_Live" customModuleProvider="target">
+                                        <rect key="frame" x="60" y="60" width="548" height="355"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="548" height="355"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NPO 1" translatesAutoresizingMaskIntoConstraints="NO" id="Ph8-vd-tMW">
-                                                    <rect key="frame" x="8" y="20" width="284" height="160"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NPO 1" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sSd-Lw-aMB">
+                                                    <rect key="frame" x="0.0" y="0.0" width="548" height="300"/>
                                                     <animations/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="160" id="SCM-Wx-Xl1"/>
+                                                        <constraint firstAttribute="height" constant="300" id="Xwg-up-czY"/>
                                                     </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOS Journaal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uY3-Ai-VaI">
+                                                    <rect key="frame" x="0.0" y="311" width="548" height="36"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="leading" secondItem="sSd-Lw-aMB" secondAttribute="leading" id="f2k-c5-dKW"/>
+                                            <constraint firstAttribute="trailing" secondItem="sSd-Lw-aMB" secondAttribute="trailing" id="iQf-gu-tHC"/>
+                                            <constraint firstItem="uY3-Ai-VaI" firstAttribute="bottom" secondItem="JWN-S6-bxN" secondAttribute="bottomMargin" id="kSa-1Q-00W"/>
+                                            <constraint firstItem="uY3-Ai-VaI" firstAttribute="leading" secondItem="JWN-S6-bxN" secondAttribute="leading" id="vaI-Ig-8pA"/>
+                                            <constraint firstAttribute="trailing" secondItem="uY3-Ai-VaI" secondAttribute="trailing" id="wwS-TL-xTg"/>
+                                            <constraint firstItem="sSd-Lw-aMB" firstAttribute="top" secondItem="JWN-S6-bxN" secondAttribute="top" id="ycM-cj-kXh"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="label" destination="uY3-Ai-VaI" id="KJH-4R-PZC"/>
+                                            <outlet property="labelBottomConstraint" destination="kSa-1Q-00W" id="071-0e-Jdg"/>
+                                            <outlet property="logoView" destination="sSd-Lw-aMB" id="nT6-oT-VSY"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="VdU-JV-b62"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="7oV-mY-YbG"/>
+                                </connections>
+                            </collectionView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dUV-X4-76T" userLabel="5 Columns">
+                                <rect key="frame" x="0.0" y="450" width="1920" height="630"/>
+                                <animations/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="100" minimumInteritemSpacing="50" id="Stk-zn-Tsw">
+                                    <size key="itemSize" width="308" height="168"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="60" minY="40" maxX="60" maxY="60"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ChannelCell" id="Y7h-2o-K2i" customClass="SmallChannelCell" customModule="NPO_Live" customModuleProvider="target">
+                                        <rect key="frame" x="60" y="40" width="308" height="168"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="308" height="168"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NPO Nieuws" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kjb-mZ-thi">
+                                                    <rect key="frame" x="0.0" y="0.0" width="308" height="168"/>
+                                                    <animations/>
                                                 </imageView>
                                             </subviews>
                                             <animations/>
@@ -47,32 +105,37 @@
                                         </view>
                                         <animations/>
                                         <constraints>
-                                            <constraint firstItem="Ph8-vd-tMW" firstAttribute="leading" secondItem="He5-eV-epd" secondAttribute="leadingMargin" id="Hd7-Nk-wgf"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="Ph8-vd-tMW" secondAttribute="trailing" id="qhg-3K-c0E"/>
-                                            <constraint firstItem="Ph8-vd-tMW" firstAttribute="centerY" secondItem="He5-eV-epd" secondAttribute="centerY" id="rum-Jt-ahg"/>
+                                            <constraint firstAttribute="bottom" secondItem="kjb-mZ-thi" secondAttribute="bottom" id="NW1-yd-2LC"/>
+                                            <constraint firstItem="kjb-mZ-thi" firstAttribute="leading" secondItem="Y7h-2o-K2i" secondAttribute="leading" id="WZA-YH-nFV"/>
+                                            <constraint firstAttribute="trailing" secondItem="kjb-mZ-thi" secondAttribute="trailing" id="roe-BL-hQe"/>
+                                            <constraint firstItem="kjb-mZ-thi" firstAttribute="top" secondItem="Y7h-2o-K2i" secondAttribute="top" id="yKJ-kr-Qh3"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="logoView" destination="Ph8-vd-tMW" id="277-m7-5EX"/>
+                                            <outlet property="logoView" destination="kjb-mZ-thi" id="1Sa-Cp-Zlp"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="j1u-KW-PEQ"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="P1Q-c0-XGN"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="p6Q-fa-dey"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="IkJ-7i-aJ9"/>
                                 </connections>
                             </collectionView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Kbk-6m-r1C" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="AfK-nk-Ym0"/>
-                            <constraint firstItem="Kbk-6m-r1C" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="HN1-FS-7A8"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Kbk-6m-r1C" secondAttribute="trailing" id="foe-tT-6zJ"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Kbk-6m-r1C" secondAttribute="bottom" id="hSj-AV-h2f"/>
+                            <constraint firstItem="Mok-lG-N3N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LSa-kn-uRW"/>
+                            <constraint firstItem="Mok-lG-N3N" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="QSr-aT-jUR"/>
+                            <constraint firstItem="dUV-X4-76T" firstAttribute="top" secondItem="Mok-lG-N3N" secondAttribute="bottom" constant="-50" id="RDQ-cl-w2R"/>
+                            <constraint firstItem="dUV-X4-76T" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="VEI-Fc-Og1"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dUV-X4-76T" secondAttribute="bottom" id="VNq-Tj-gSL"/>
+                            <constraint firstAttribute="trailing" secondItem="Mok-lG-N3N" secondAttribute="trailing" id="bdi-G4-g2A"/>
+                            <constraint firstAttribute="trailing" secondItem="dUV-X4-76T" secondAttribute="trailing" id="oaS-do-3aM"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="Kbk-6m-r1C" id="RnP-Dg-kCT"/>
+                        <outlet property="bottomCollectionView" destination="dUV-X4-76T" id="3l3-sD-1pe"/>
+                        <outlet property="topCollectionView" destination="Mok-lG-N3N" id="p8g-ff-xKG"/>
                         <segue destination="VGP-oA-IY9" kind="show" identifier="streamChannel" id="Cw6-Be-FcC"/>
                     </connections>
                 </viewController>
@@ -90,6 +153,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NPO 1" width="1607" height="1077"/>
+        <image name="NPO 1" width="548" height="300"/>
+        <image name="NPO Nieuws" width="308" height="168"/>
     </resources>
 </document>

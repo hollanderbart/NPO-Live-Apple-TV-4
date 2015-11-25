@@ -49,4 +49,21 @@ extension String {
         
 		return self.substringWithRange(Range<String.Index>(start: start, end: end))
 	}
+	
+	func htmlDecoded() -> String {
+		guard (self != "") else { return self }
+		var newStr = self
+		let entities = [
+			"&quot;"    : "\"",
+			"&amp;"     : "&",
+			"&apos;"    : "'",
+			"&lt;"      : "<",
+			"&gt;"      : ">",
+		]
+		
+		for (name,value) in entities {
+			newStr = newStr.stringByReplacingOccurrencesOfString(name, withString: value)
+		}
+		return newStr
+	}
 }

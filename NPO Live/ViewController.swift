@@ -10,47 +10,37 @@ import UIKit
 import AVKit
 
 class ViewController: UIViewController {
-	    
-    let streams = [
-        Channel(
-            title: "NPO 1",
-            url: NSURL(type: .Live, name: "ned1")),
-        Channel(
-            title: "NPO 2",
-            url: NSURL(type: .Live, name: "ned2")),
-		Channel(
-			title: "NPO 3",
-			url: NSURL(type: .Live, name: "ned3")),
-		Channel(
-			title: "NPO Nieuws",
-			url: NSURL(type: .Thema, name: "journaal24")),
-		Channel(
-			title: "NPO Politiek",
-			url: NSURL(type: .Thema, name: "politiek24")),
-		Channel(
-			title: "NPO Best",
-			url: NSURL(type: .Thema, name: "best24")),
-		Channel(
-			title: "NPO Doc",
-			url: NSURL(type: .Thema, name: "hollanddoc24")),
-		Channel(
-			title: "NPO 101",
-			url: NSURL(type: .Thema, name: "101tv")),
-		Channel(
-			title: "NPO Cultura",
-			url: NSURL(type: .Thema, name: "cultura24")),
-		Channel(
-			title: "NPO Zapp Xtra",
-			url: NSURL(type: .Thema, name: "zappelin24")),
-		Channel(
-			title: "NPO Humor tv",
-			url: NSURL(type: .Thema, name: "humor24"))
-	]
 	
-	@IBOutlet weak var collectionView: UICollectionView!
-
+	var getActiveShowsTimer : NSTimer?
+	
+	@IBOutlet weak var topCollectionView: UICollectionView!
+	@IBOutlet weak var bottomCollectionView: UICollectionView!
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+		let blurEffectView = UIVisualEffectView(effect: blurEffect)
+		blurEffectView.frame = bottomCollectionView.frame
+		blurEffectView.alpha = 0.5
+		view.addSubview(blurEffectView)
+		view.bringSubviewToFront(bottomCollectionView)
+
+		getActiveShows()
+	}
+	
+	override func viewWillAppear(animated: Bool) {
+		getActiveShowsTimer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: Selector("getActiveShows"), userInfo: nil, repeats: true)
+	}
+	
+	override func viewWillDisappear(animated: Bool) {
+		self.getActiveShowsTimer?.invalidate()
+	}
+	
+	func getActiveShows() {
+		ChannelProvider.getActiveShowNamePerChannel { () -> Void in
+			self.topCollectionView.reloadData()
+		}
 	}
 }
 
@@ -58,18 +48,26 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDataSource {
 	
 	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return streams.count
+		if collectionView == topCollectionView {
+			return 3
+		} else if collectionView == bottomCollectionView {
+			return ChannelProvider.streams.count - 3
+		}
+		
+		return 0
 	}
 
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ChannelCell", forIndexPath: indexPath) as! ChannelCell
-		cell.channel = streams[indexPath.row]
+		let cell : UICollectionViewCell!
+		if collectionView == topCollectionView {
+			cell = collectionView.dequeueReusableCellWithReuseIdentifier("ChannelCell", forIndexPath: indexPath) as! BigChannelCell
+			(cell as! BigChannelCell).channel = ChannelProvider.streams[indexPath.row]
+		} else {
+			cell = collectionView.dequeueReusableCellWithReuseIdentifier("ChannelCell", forIndexPath: indexPath) as! SmallChannelCell
+			(cell as! SmallChannelCell).channel = ChannelProvider.streams[indexPath.row + 3]
+		}
+		
 		return cell
-	}
-	
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-		let width = (collectionView.frame.width - (2 * 10)) / 3
-		return CGSize(width: width, height: 250)
 	}
 }
 
@@ -77,13 +75,16 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let channel = streams[indexPath.row]
 		
-		if let url = channel.url {
-			NPOStreamProvider.getStream(url, onCompletion: { stream in
-				channel.streamUrl = stream
-				self.performSegueWithIdentifier("streamChannel", sender: channel)
-			})
+		let channel : Channel!
+		if collectionView == topCollectionView {
+			channel = ChannelProvider.streams[indexPath.row]
+		} else {
+			channel = ChannelProvider.streams[indexPath.row + 3]
+		}
+		
+		ChannelProvider.getStream(channel) { stream in
+			self.performSegueWithIdentifier("streamChannel", sender: channel)
 		}
     }
 }
