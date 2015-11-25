@@ -9,6 +9,7 @@ Channels include NPO 1, NPO 2, NPO 3 and many more.
 ![Playing](images/playing.png)
 
 ## Changelog
+v1.1: Design improvements, check for updates automatically, minor improvements
 v1.0: Initial release.
 
 ## Setup
