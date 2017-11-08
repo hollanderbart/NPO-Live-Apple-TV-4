@@ -1,3 +1,6 @@
+## IS NOT WORKING
+This project isn't maintained anymore and because of this it doesn't work for almost a year now. Luckely a other developer maintains it now. Go to his project to check it out! (https://github.com/hollanderbart/NPO-Live)
+
 # NPO Live
 
 NPO Live is an unofficial Apple TV application for watching NPO channels live, as we think using Airplay is not just ‘good enough’. [Source](http://www.iculture.nl/nederlandse-apple-tv-apps-omroepen-tv-aanbieders/) (Dutch)
